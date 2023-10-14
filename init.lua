@@ -1,4 +1,5 @@
 require('core.general')
 require('core.keymaps')
+require('core.functions')
 require('core.plugins')
 require('core.plugin_config')
