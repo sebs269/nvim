@@ -13,25 +13,46 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
+
+  -- **************************
   -- My plugins here
+  -- **************************
+
+  -- File Explorer
   use 'nvim-tree/nvim-tree.lua'
-  use "rebelot/kanagawa.nvim"
-  use {
-      'nvim-lualine/lualine.nvim',
-      requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  }
-  use "nvim-treesitter/nvim-treesitter"
+
+  -- VSCode like icons
+  use 'nvim-tree/nvim-web-devicons'
+
+  -- Color Scheme
+  use 'rebelot/kanagawa.nvim'
+
+  -- Bottom Bar
+  use 'nvim-lualine/lualine.nvim'
+  -- use {
+  --     'nvim-lualine/lualine.nvim',
+  --     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  -- }
+
+  -- Syntax Uighlighting?
+  use 'nvim-treesitter/nvim-treesitter'
+
+  -- Fuzzy Uinder
   use {
       'nvim-telescope/telescope.nvim', tag = '0.1.4',
       requires = { {'nvim-lua/plenary.nvim'} }
   }
+
+  -- Language Server Manager
   use {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-      "neovim/nvim-lspconfig",
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      'neovim/nvim-lspconfig',
   }
+  -- **************************
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
+  -- **************************
   if packer_bootstrap then
     require('packer').sync()
   end
