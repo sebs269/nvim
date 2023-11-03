@@ -34,10 +34,10 @@ return require('packer').startup(function(use)
   --     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   -- }
 
-  -- Syntax Uighlighting?
+  -- Syntax Highlighting?
   use 'nvim-treesitter/nvim-treesitter'
 
-  -- Fuzzy Uinder
+  -- Fuzzy Finder
   use {
       'nvim-telescope/telescope.nvim', tag = '0.1.4',
       requires = { {'nvim-lua/plenary.nvim'} }
