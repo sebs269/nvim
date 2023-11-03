@@ -24,6 +24,6 @@ vim.opt.ea              = false
 vim.opt.errorbells      = false
 vim.opt.smartcase       = true
 vim.opt.cursorline      = true
-vim.opt.list            = true
+vim.opt.list            = false
 vim.opt.listchars       = "tab:\\>,trail:·,space:·"
 vim.g.mapleader         = ","
