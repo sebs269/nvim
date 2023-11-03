@@ -1,4 +1,5 @@
 vim.opt.relativenumber  = true
+vim.opt.number          = true
 vim.opt.ignorecase      = true
 vim.opt.expandtab       = true
 vim.opt.sta             = false
