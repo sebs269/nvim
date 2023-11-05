@@ -24,30 +24,28 @@ return require('packer').startup(function(use)
   -- VSCode like icons
   use 'nvim-tree/nvim-web-devicons'
 
-  -- Color Scheme
+  -- Color Schemes
   use 'rebelot/kanagawa.nvim'
+  use { "catppuccin/nvim", as = "catppuccin" }
+  use "EdenEast/nightfox.nvim"
 
-  -- Bottom Bar
+  -- Status Line
   use 'nvim-lualine/lualine.nvim'
-  -- use {
-  --     'nvim-lualine/lualine.nvim',
-  --     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  -- }
 
   -- Syntax Highlighting?
   use 'nvim-treesitter/nvim-treesitter'
 
   -- Fuzzy Finder
   use {
-      'nvim-telescope/telescope.nvim', tag = '0.1.4',
-      requires = { {'nvim-lua/plenary.nvim'} }
+    'nvim-telescope/telescope.nvim', tag = '0.1.4',
+    requires = { {'nvim-lua/plenary.nvim'} }
   }
 
   -- Language Server Manager
   use {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      'neovim/nvim-lspconfig',
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
   }
   -- **************************
   -- Automatically set up your configuration after cloning packer.nvim

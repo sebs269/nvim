@@ -1,5 +1,7 @@
 require("core.plugin_cfg.nvim-tree")
-require("core.plugin_cfg.kanagawa")
+-- require("core.plugin_cfg.catppuccin")
+-- require("core.plugin_cfg.kanagawa")
+require("core.plugin_cfg.nightfox")
 require("core.plugin_cfg.lualine")
 -- require("core.plugin_cfg.treesitter")
 require("core.plugin_cfg.telescope")
