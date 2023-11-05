@@ -31,6 +31,7 @@ return require('packer').startup(function(use)
 
   -- Status Line
   use 'nvim-lualine/lualine.nvim'
+  -- use 'feline-nvim/feline.nvim'
 
   -- Syntax Highlighting?
   use 'nvim-treesitter/nvim-treesitter'
