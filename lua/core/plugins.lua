@@ -25,9 +25,11 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-web-devicons'
 
   -- Color Schemes
-  use 'rebelot/kanagawa.nvim'
-  use { "catppuccin/nvim", as = "catppuccin" }
-  use "EdenEast/nightfox.nvim"
+  use 'Shatur/neovim-ayu'
+  -- use 'rebelot/kanagawa.nvim'
+  -- use { "catppuccin/nvim", as = "catppuccin" }
+  -- use "EdenEast/nightfox.nvim"
+  -- use "folke/tokyonight.nvim"
 
   -- Status Line
   use 'nvim-lualine/lualine.nvim'
