@@ -1,2 +1,3 @@
 vim.o.termguicolors = true
-vim.cmd [[ colorscheme ayu-mirage ]]
+vim.cmd [[ let g:dracula_colorterm = 1 ]]
+vim.cmd [[ colorscheme dracula ]]

@@ -26,17 +26,21 @@ return require('packer').startup(function(use)
 
   -- Color Schemes
   use 'Shatur/neovim-ayu'
-  -- use 'rebelot/kanagawa.nvim'
-  -- use { "catppuccin/nvim", as = "catppuccin" }
-  -- use "EdenEast/nightfox.nvim"
-  -- use "folke/tokyonight.nvim"
+  use 'Mofiqul/dracula.nvim'
+  use 'rebelot/kanagawa.nvim'
+  use { 'catppuccin/nvim', as = 'catppuccin' }
+  use 'EdenEast/nightfox.nvim'
+  use 'folke/tokyonight.nvim'
 
   -- Status Line
   use 'nvim-lualine/lualine.nvim'
   -- use 'feline-nvim/feline.nvim'
 
   -- Syntax Highlighting?
-  use 'nvim-treesitter/nvim-treesitter'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
 
   -- Fuzzy Finder
   use {
