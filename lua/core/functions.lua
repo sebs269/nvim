@@ -5,3 +5,15 @@ function TrimWhiteSpace()
 end
 
 vim.cmd("command! TrimWhiteSpace lua TrimWhiteSpace()")
+
+-- FIXME
+function SearchAllBuffers(str)
+    vim.cmd('cclose')
+    vim.cmd('%argd')
+    vim.cmd('bufdo :arga')
+    vim.cmd('argded')
+    vim.cmd('vimgrep /' .. str .. '/ ##')
+    vim.cmd('copen')
+end
+
+vim.cmd("command! -nargs=1 SearchAllBuffers lua SearchAllBuffers(<f-args>)")
