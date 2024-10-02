@@ -1,6 +1,7 @@
-vim.opt.relativenumber  = true
 vim.opt.number          = true
+vim.opt.relativenumber  = true
 vim.opt.ignorecase      = true
+vim.opt.smartcase       = true
 vim.opt.expandtab       = true
 vim.opt.sta             = false
 vim.opt.shiftwidth      = 2
@@ -23,7 +24,6 @@ vim.opt.ttyfast         = true
 vim.opt.lazyredraw      = true
 vim.opt.ea              = true
 vim.opt.errorbells      = false
-vim.opt.smartcase       = true
 vim.opt.cursorline      = true
 vim.opt.list            = false
 vim.opt.listchars       = "tab:\\>,trail:·,space:·"

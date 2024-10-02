@@ -1,3 +1,5 @@
 vim.o.termguicolors = true
-vim.cmd [[ let g:dracula_colorterm = 1 ]]
-vim.cmd [[ colorscheme dracula ]]
+vim.cmd [[ colorscheme kanagawa ]]
+vim.cmd [[ highlight Normal guibg=#282a36]]
+vim.cmd [[ highlight NormalNC guibg=#1f1f28]]
+vim.cmd [[ highlight NormalFloat guibg=#282a36]]
