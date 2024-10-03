@@ -25,16 +25,27 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-web-devicons'
 
   -- Color Schemes
+  use 'rebelot/kanagawa.nvim'
+  use 'rmehri01/onenord.nvim'
   use 'Shatur/neovim-ayu'
   use 'Mofiqul/dracula.nvim'
-  use 'rebelot/kanagawa.nvim'
   use { 'catppuccin/nvim', as = 'catppuccin' }
   use 'EdenEast/nightfox.nvim'
-  use 'folke/tokyonight.nvim'
+  use 'bluz71/vim-nightfly-colors'
+  use 'challenger-deep-theme/vim'
+  use 'ellisonleao/gruvbox.nvim'
+  use 'tomasr/molokai'
+  --use 'folke/tokyonight.nvim'
+  --use 'olimorris/onedarkpro.nvim'
+  --use 'navarasu/onedark.nvim'
+  --use 'rose-pine/neovim'
+  --use 'jacoborus/tender.vim'
 
   -- Status Line
   use 'nvim-lualine/lualine.nvim'
-  -- use 'feline-nvim/feline.nvim'
+
+  -- Status Line
+  --use 'tpope/vim-fugitive'
 
   -- Syntax Highlighting?
   use {
@@ -44,8 +55,8 @@ return require('packer').startup(function(use)
 
   -- Fuzzy Finder
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.4',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    'nvim-telescope/telescope.nvim', tag = '0.1.8',
+    requires = { {'nvim-lua/plenary.nvim'} },
   }
 
   -- Language Server Manager
