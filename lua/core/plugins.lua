@@ -56,7 +56,11 @@ return require('packer').startup(function(use)
   -- Fuzzy Finder
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
-    requires = { {'nvim-lua/plenary.nvim'} },
+    requires = {
+      {'nvim-lua/plenary.nvim'},
+      {'nvim-telescope/telescope-live-grep-args.nvim'},
+      {'aaronhallaert/advanced-git-search.nvim'},
+    }
   }
 
   -- Language Server Manager
