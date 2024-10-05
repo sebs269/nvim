@@ -48,10 +48,10 @@ return require('packer').startup(function(use)
   --use 'tpope/vim-fugitive'
 
   -- Syntax Highlighting?
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
+  --use {
+  --  'nvim-treesitter/nvim-treesitter',
+  --  run = ':TSUpdate'
+  --}
 
   -- Fuzzy Finder
   use {
