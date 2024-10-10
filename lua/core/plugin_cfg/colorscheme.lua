@@ -9,8 +9,8 @@ require("tokyonight").setup({
   },
   -- Change the "hint" color to the "orange" color, and make the "error" color bright red
   on_colors = function(colors)
-    colors.hint = colors.orange
-    colors.error = "#00FF00"
+    --colors.hint = colors.orange
+    --colors.error = "#FF0000"
   end,
 
   -- Borderless Telescope
