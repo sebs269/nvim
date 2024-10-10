@@ -42,6 +42,9 @@ return require('packer').startup(function(use)
   --use 'jacoborus/tender.vim'
 
   -- Status Line
+  use 'goolord/alpha-nvim'
+
+  -- Status Line
   use 'nvim-lualine/lualine.nvim'
 
   -- Status Line
