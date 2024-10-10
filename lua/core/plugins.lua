@@ -25,21 +25,23 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-web-devicons'
 
   -- Color Schemes
+  use 'EdenEast/nightfox.nvim'
+  use 'folke/tokyonight.nvim'
   use 'rebelot/kanagawa.nvim'
   use 'rmehri01/onenord.nvim'
   use 'Shatur/neovim-ayu'
   use 'Mofiqul/dracula.nvim'
   use { 'catppuccin/nvim', as = 'catppuccin' }
-  use 'EdenEast/nightfox.nvim'
+  use 'ellisonleao/gruvbox.nvim'
+  --[[
   use 'bluz71/vim-nightfly-colors'
   use 'challenger-deep-theme/vim'
-  use 'ellisonleao/gruvbox.nvim'
+  use 'olimorris/onedarkpro.nvim'
+  use 'navarasu/onedark.nvim'
+  use 'rose-pine/neovim'
+  use 'jacoborus/tender.vim'
   use 'tomasr/molokai'
-  --use 'folke/tokyonight.nvim'
-  --use 'olimorris/onedarkpro.nvim'
-  --use 'navarasu/onedark.nvim'
-  --use 'rose-pine/neovim'
-  --use 'jacoborus/tender.vim'
+  ]]
 
   -- Status Line
   use 'goolord/alpha-nvim'
@@ -51,10 +53,12 @@ return require('packer').startup(function(use)
   --use 'tpope/vim-fugitive'
 
   -- Syntax Highlighting?
-  --use {
-  --  'nvim-treesitter/nvim-treesitter',
-  --  run = ':TSUpdate'
-  --}
+  --[[
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+  ]]
 
   -- Fuzzy Finder
   use {
@@ -70,8 +74,12 @@ return require('packer').startup(function(use)
   use {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
+  }
+
+  use {
     'neovim/nvim-lspconfig',
   }
+
   -- **************************
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
