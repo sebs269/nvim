@@ -21,19 +21,19 @@ return require('packer').startup(function(use)
   -- File Explorer
   use 'nvim-tree/nvim-tree.lua'
 
-  -- VSCode like icons
+  -- Pretty icons
   use 'nvim-tree/nvim-web-devicons'
 
   -- Color Schemes
   use 'EdenEast/nightfox.nvim'
   use 'folke/tokyonight.nvim'
+  use { 'catppuccin/nvim', as = 'catppuccin' }
   use 'rebelot/kanagawa.nvim'
   use 'rmehri01/onenord.nvim'
   use 'Shatur/neovim-ayu'
-  use 'Mofiqul/dracula.nvim'
-  use { 'catppuccin/nvim', as = 'catppuccin' }
   use 'ellisonleao/gruvbox.nvim'
   --[[
+  use 'Mofiqul/dracula.nvim'
   use 'bluz71/vim-nightfly-colors'
   use 'challenger-deep-theme/vim'
   use 'olimorris/onedarkpro.nvim'
@@ -43,13 +43,13 @@ return require('packer').startup(function(use)
   use 'tomasr/molokai'
   ]]
 
-  -- Status Line
+  -- Greeter
   use 'goolord/alpha-nvim'
 
   -- Status Line
   use 'nvim-lualine/lualine.nvim'
 
-  -- Status Line
+  -- Git
   --use 'tpope/vim-fugitive'
 
   -- Syntax Highlighting?
