@@ -1,7 +1,6 @@
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    -- theme = 'ayu',
     disabled_filetypes = { 'packer', 'NvimTree' },
     component_separators = '',
     section_separators = '',
