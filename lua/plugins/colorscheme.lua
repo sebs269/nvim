@@ -12,7 +12,6 @@ return {
       },
       color_overrides = {
         latte = {
-          base        = "#faf4ed",
           warm_pink   = "#ebdfe4",
           warm_grey   = "#9893a5",
           --beige       = "#ebe5df",
@@ -25,8 +24,6 @@ return {
           base_deep   = "#272c36",
           grey        = "#79809a",
         },
-        macchiato = {},
-        mocha = {},
       },
       highlight_overrides = {
         latte = function(latte)
