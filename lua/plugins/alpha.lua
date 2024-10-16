@@ -1,7 +1,9 @@
 return {
   'goolord/alpha-nvim',
   config = function ()
+    local alpha = require'alpha'
     local dashboard = require'alpha.themes.dashboard'
+
     -- Set the buttons
     dashboard.section.buttons.val = {}
 
@@ -22,6 +24,7 @@ return {
       { type = "padding", val = 2 },
       dashboard.section.footer,
     }
-    require'alpha'.setup(require'alpha.themes.dashboard'.config)
+
+    alpha.setup(dashboard.opts)
   end
 }
