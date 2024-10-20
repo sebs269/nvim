@@ -25,6 +25,7 @@ return {
       dashboard.section.footer,
     }
 
+    vim.opt.laststatus = 0,
     alpha.setup(dashboard.opts)
   end
 }
