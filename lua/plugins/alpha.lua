@@ -25,7 +25,7 @@ return {
       dashboard.section.footer,
     }
 
-    vim.opt.laststatus = 0,
+    vim.cmd[[autocmd User AlphaReady set laststatus=0 | autocmd User AlphaClosed set laststatus=2]]
     alpha.setup(dashboard.opts)
   end
 }
