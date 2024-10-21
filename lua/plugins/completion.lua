@@ -1,23 +1,16 @@
 return {
   {
-    "L3MON4D3/LuaSnip",
-    -- follow latest release.
-    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-    dependencies = {
-      "saadparwaiz1/cmp_luasnip",
-      "rafamadriz/friendly-snippets",
-    },
-  },
-  {
     "hrsh7th/nvim-cmp",
     -- load cmp on InsertEnter
-    lazy = "true",
     event = { "InsertEnter", "CmdlineEnter" },
     -- these dependencies will only be loaded when cmp loads
     -- dependencies are always lazy-loaded unless specified otherwise
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
+      "saadparwaiz1/cmp_luasnip",
+      "rafamadriz/friendly-snippets",
+      "L3MON4D3/LuaSnip",
     },
     config = function()
       local cmp = require'cmp'
