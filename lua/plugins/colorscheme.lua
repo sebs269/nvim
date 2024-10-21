@@ -48,6 +48,11 @@ return {
         end,
       },
     }
-    vim.cmd [[ colorscheme catppuccin ]]
+    vim.api.nvim_create_autocmd("OptionSet", {
+      pattern = "background",
+      callback = function()
+        vim.cmd [[ colorscheme catppuccin ]]
+      end,
+    })
   end,
 }
