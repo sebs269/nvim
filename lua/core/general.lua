@@ -27,4 +27,5 @@ vim.opt.errorbells      = false
 vim.opt.cursorline      = true
 vim.opt.list            = false
 vim.opt.listchars       = "tab:\\>,trail:·,space:·"
+vim.opt.clipboard       = 'unnamedplus'
 vim.g.mapleader         = ","
