@@ -12,8 +12,11 @@ return {
       },
       color_overrides = {
         latte = {
+          off_white   = "#f1f1f1",
           warm_pink   = "#ebdfe4",
           warm_grey   = "#9893a5",
+          mid_grey    = "#c7cbd2",
+          dark_grey   = "#898c9a",
           --beige       = "#ebe5df",
           --dark_blue   = "#284783",
           --light_grey  = "#a8a3b3",
@@ -28,9 +31,13 @@ return {
       highlight_overrides = {
         latte = function(latte)
           return {
-            --Normal                    = { bg = "None" },
+            Normal                    = { bg = latte.off_white },
+            NormalNC                  = { bg = latte.off_white },
+            NormalSB                  = { bg = latte.off_white },
             CursorLine                = { bg = latte.warm_pink },
             Comment                   = { fg = latte.warm_grey },
+            TabLine                   = { bg = latte.mid_grey, fg = latte.dark_grey },
+            --TabLineSel                = { fg = latte.white },
             --NvimTreeNormal            = { bg = latte.beige },
             --NvimTreeFolderIcon        = { fg = latte.dark_blue },
             --NvimTreeFolderName        = { fg = latte.dark_blue },
