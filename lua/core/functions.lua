@@ -16,3 +16,12 @@ function SearchAllBuffers(str)
 end
 
 vim.cmd("command! -nargs=1 SearchAllBuffers lua SearchAllBuffers(<f-args>)")
+
+-- Create an augroup for CursorLine management (for it to be set only for active window)
+vim.api.nvim_exec([[
+  augroup CursorLine
+    autocmd!
+    autocmd WinEnter,BufEnter * setlocal cursorline
+    autocmd WinLeave,BufLeave * setlocal nocursorline
+  augroup END
+]], false)
