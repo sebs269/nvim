@@ -12,7 +12,8 @@ return {
       },
       color_overrides = {
         latte = {
-          off_white   = "#f1f1f1",
+          white       = "#f1f1f1",
+          off_white   = "#eaeaea",
           warm_pink   = "#ebdfe4",
           warm_grey   = "#9893a5",
           mid_grey    = "#c7cbd2",
@@ -24,6 +25,7 @@ return {
         },
         frappe = {
           base        = "#2e3340",
+          base_dark   = "#252933",
           base_deep   = "#272c36",
           grey        = "#79809a",
         },
@@ -31,7 +33,7 @@ return {
       highlight_overrides = {
         latte = function(latte)
           return {
-            Normal                    = { bg = latte.off_white },
+            Normal                    = { bg = latte.white },
             NormalNC                  = { bg = latte.off_white },
             NormalSB                  = { bg = latte.off_white },
             CursorLine                = { bg = latte.warm_pink },
@@ -48,7 +50,8 @@ return {
         end,
         frappe = function(frappe)
           return {
-            --Normal                    = { bg = "None" },
+            NormalNC                  = { bg = frappe.base_dark },
+            NormalSB                  = { bg = frappe.base_dark },
             Comment                   = { fg = frappe.grey},
             --NvimTreeNormal            = { bg = frappe.base_deep},
           }

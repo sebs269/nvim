@@ -4,50 +4,46 @@ return {
     local alpha = require'alpha'
     local dashboard = require'alpha.themes.dashboard'
 
+    local function getLen(str, start_pos)
+      local byte = string.byte(str, start_pos)
+      if not byte then
+        return nil
+      end
+
+      return (byte < 0x80 and 1) or (byte < 0xE0 and 2) or (byte < 0xF0 and 3) or (byte < 0xF8 and 4) or 1
+    end
+
+    local function colorize(header, header_color_map, colors)
+      for letter, color in pairs(colors) do
+        local color_name = "AlphaJemuelKwelKwelWalangTatay" .. letter
+        vim.api.nvim_set_hl(0, color_name, color)
+        colors[letter] = color_name
+      end
+
+      local colorized = {}
+
+      for i, line in ipairs(header_color_map) do
+        local colorized_line = {}
+        local pos = 0
+
+        for j = 1, #line do
+          local start = pos
+          pos = pos + getLen(header[i], start + 1)
+
+          local color_name = colors[line:sub(j, j)]
+          if color_name then
+            table.insert(colorized_line, { color_name, start, pos })
+          end
+        end
+
+        table.insert(colorized, colorized_line)
+      end
+
+      return colorized
+    end
+
     -- Set the header
-    --dashboard.section.header.val = {
-    --  [[    ⡞⠉⠊⢱⠀⣀⣀⠀⠀]],
-    --  [[⠀⣰⠏⠑⢷⠀⠀⡸⠋⠀⠸⣄⠀]],
-    --  [[⠘⢅⡀⠀⠀⡷⠒⢧⣀⣀⡤⠊⠀]],
-    --  [[⠀⣠⠞⠛⠉⢇⣀⣸⠁⠀⠉⠳⡄]],
-    --  [[⠀⠓⡄⠀⣠⡎⠀⠈⢧⣄⣠⠎⠀]],
-    --  [[⠀⠀⠑⠊⠁⣇⣀⡀⡸⠀⠀⠀⠀]],
-    --  [[⣀⣀⣀⣀⠀⠀⠘⡆⠀⠀⠀⠀⠀]],
-    --  [[⢟⠲⢄⡀⠉⠲⡄⡇⠀⠀⠀⠀⠀]],
-    --  [[⠈⠣⡀⠈⠓⢤⡈⣧⠀⠀⠀⠀⠀]],
-    --  [[⠀⠀⠈⠓⠢⠤⠬⢿⡀⠀⠀⠀⠀]],
-    --  [[⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀]],
-    --  [[⠀⠀⠀⠀⠀⠀⠀⠀⢸⡀⠀⠀⠀]],
-    --  [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⢇⠀⠀⠀]],
-    --  [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⠄  ]],
-    --}
-
-    --dashboard.section.header.val = {
-    --  [[      ⢀⣴⠟⠛⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⣤⣀⠀⠀⠀⠀]],
-    --  [[⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⢻⡆⠀⠀⠀⠀⠀⠀⣼⠏⠀⠀⠙⣷⠀⠀⠀]],
-    --  [[⠀⠀⠀⠀⠀⠀⠈⣿⠀⠀⠀⠘⣷⠀⠀⠀⠀⠀⢠⡿⠀⠀⠀⢰⡏⠀⠀⠀]],
-    --  [[⠀⠀⠀⠀⠀⠀⠀⢿⡄⠀⠀⠀⢻⡄⠀⠀⠀⠀⢸⡇⠀⠀⠀⣸⠇⠀⠀⠀]],
-    --  [[⠀⠀⠀⠀⠀⠀⠀⢸⣇⠀⠀⠀⢘⣧⠀⠀⠀⠀⣿⠀⠀⠀⠀⣿⠀⠀⠀⠀]],
-    --  [[⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⢿⡄⠀⠀⢸⡏⠀⠀⠀⢸⡇⠀⠀⠀⠀]],
-    --  [[⠀⠀⠀⠀⠀⠀⠀⠀⢹⡆⠀⠀⠀⠸⣇⠀⠀⣾⠁⠀⠀⠀⣸⠃⠀⠀⠀⠀]],
-    --  [[⠀⠀⠀⠀⠀⢀⣀⣀⣸⣧⠀⠀⠀⠀⣿⡀⢠⡟⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀]],
-    --  [[⠀⠀⠀⠀⣰⡟⠉⠉⠉⣿⠀⠀⠀⠀⢸⣇⣼⠇⠀⠀⠀⢀⡇⠀⠀⠀⠀⠀]],
-    --  [[⢀⣴⠾⠛⣿⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠉⠁⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀]],
-    --  [[⣾⠁⠀⠀⢿⡄⠀⠀⢀⣼⠟⠛⠛⠻⠶⢦⣤⣀⡀⠀⠀⢸⡇⠀⠀⠀⠀⠀]],
-    --  [[⢻⡀⠀⠀⢸⣇⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠈⠉⠛⠳⣦⣼⡇⠀⠀⠀⠀⠀]],
-    --  [[⢸⣇⠀⠀⠀⢻⡄⠀⠀⢻⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡇⠀⠀⠀⠀⠀]],
-    --  [[⢸⣿⡄⠀⠀⠀⢻⣄⠀⠀⠙⢷⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀]],
-    --  [[⠸⣟⠻⣦⣀⠀⠀⣹⣷⣦⡴⠾⠋⠉⠙⠛⢻⡏⠀⠀⠀⠀⢹⡇⠀⠀⠀⠀]],
-    --  [[⠀⣿⠀⠈⠙⠛⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⢸⣇⠀⠀⠀⠀⢈⣿⠀⠀⠀⠀]],
-    --  [[⠀⢹⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀⣸⡇⠀⠀⠀⠀]],
-    --  [[⠀⠀⢻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡟⠀⠀⠀⠀⠀]],
-    --  [[⠀⠀⠈⢻⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡟⠀⠀⠀⠀⠀⠀]],
-    --  [[⠀⠀⠀⠀⠙⢷⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⠏⠀⠀⠀⠀⠀⠀⠀]],
-    --  [[⠀⠀⠀⠀⠀⠀⠙⠻⢶⣤⣄⣀⣀⣀⣀⣠⣤⠾⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀]],
-    --  [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ]],
-    --}
-
-    dashboard.section.header.val = {
+    local header = {
       [[                                         ]],
       [[              ⣠⣶⣿⣿⣿⣿⣿⣷⣤                  ]],
       [[           ⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦               ]],
@@ -64,12 +60,61 @@ return {
       [[         ⢧               ⢁⡇⢀             ]],
       [[          ⠣     ⣤⠃      ⠲⣤⢤⠋             ]],
       [[           ⡴⠉⠙⠉⠁  ⣀      ⡇               ]],
-      [[          ⠈⠦⢤⣤⣤⣤⠤⠶⠚⠓                     ]],
+      [[          ⠈⠦⢤⣤⣤⣤⠤⠶⠚⠓     ⡇               ]],
       [[                ⠙⠓⡄      ⣤               ]],
       [[                  ⠟⣤⣤⣤⠴⠞⠉⣤⠦⣄             ]],
       [[                ⢠⢻      ⠏   ⠹            ]],
       [[                ⡇⣼     ⣸     ⣧           ]],
     }
+    
+    local color_map = {
+      [[WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW]],
+      [[WWWWWWWWWWWWWWBBBBBBBBBWWWWWWWWWWWWWWWWWW]],
+      [[WWWWWWWWWWWBBBBBBBBBBBBBBBWWWWWWWWWWWWWWW]],
+      [[WWWWWWWWWWBBBBBBBBBBBBBBBBBBWWWWWWWWWWWWW]],
+      [[WWWWWWWWWBBBBBYYYYYYYYBBBBBBBBWWWWWWWWWWW]],
+      [[WWWWWWWWWWWWBBBYYYYYYYYYYYBBBBBWWWWWWWWWW]],
+      [[WWWWWWWWWWWBBBBBYYYYBBBBYYBBBBBBWWWWWWWWW]],
+      [[WWWWWWWWWWWRRYYYYYYYBBBBBBBBBBBBWWWWWWWWW]],
+      [[WWWWWWWWRRWWRRRYYYYRRRRRYBBBBBBBWWWWWWWWW]],
+      [[WWWWWWWWRWWNRRRRRRRWWWWRRBBBBBBWWWWWWWWWW]],
+      [[WWWWWWWWRRYYYYYYYYRWWWNWRRRRRRBWWWWWWWWWW]],
+      [[WWWWWWWWWYYYYYYYYYRRWWRRBBBBBRRWWWWWWWWWW]],
+      [[WWWWWWWWWYYYYYYYYYYYYRRBYYYYBWRRWWWWWWWWW]],
+      [[WWWWWWWWWYYYYYYYYYYYYYYYYYYYWWWWWWWWWWWWW]],
+      [[WWWWWWWWWWYYYYYYYYYYYYYYYYYYWWWWWWWWWWWWW]],
+      [[WWWWWWWWWWWYYYYYYYYYYYYYYYWWWWWWWWWWWWWWW]],
+      [[WWWWWWWWWWYYYYYYYYYYYYYYYYWWWWWWWWWWWWWWW]],
+      [[WWWWWWWWWWWWWWWWYYYYYYYYYPWWWWWWWWWWWWWWW]],
+      [[WWWWWWWWWWWWWWWWWWPPPPPPPPPPWWWWWWWWWWWWW]],
+      [[WWWWWWWWWWWWWWWWPPWWWWWWPWWWPWWWWWWWWWWWW]],
+      [[WWWWWWWWWWWWWWWWPPWWWWWPWWWWWPWWWWWWWWWWW]],
+    }
+
+    local bg = vim.o.background
+    local fg_color
+
+    if (bg == 'dark') then
+      fg_color = "#DDDDDD"
+    else
+      fg_color = "#313131"
+    end
+
+    local colors = {
+      ["W"] = { fg = "#FFFFFF" },
+      ["B"] = { fg = "#568cc7" },
+      ["R"] = { fg = "#c9664c" },
+      ["Y"] = { fg = "#e1b400" },
+      ["N"] = { fg = fg_color  },
+      ["P"] = { fg = "#d9c3db" },
+    }
+
+    dashboard.section.header.opts = {
+      hl = colorize(header, color_map, colors),
+      position = "center",
+    }
+
+    dashboard.section.header.val = header
 
     -- Set the buttons
     dashboard.section.buttons.val = {}
