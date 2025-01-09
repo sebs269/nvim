@@ -18,15 +18,12 @@ return {
           warm_grey   = "#9893a5",
           mid_grey    = "#c7cbd2",
           dark_grey   = "#898c9a",
-          --beige       = "#ebe5df",
-          --dark_blue   = "#284783",
-          --light_grey  = "#a8a3b3",
-          --gold        = "#df8e1d",
         },
         frappe = {
-          base        = "#2e3340",
-          base_dark   = "#252933",
-          base_deep   = "#272c36",
+          base        = "#2e3440", -- From 'Nord' color palette
+          mantle      = "#252a33", -- Darker shade of 'base'
+          --base_deep   = "#252a33", -- Darker shade of 'base'
+          base_light  = "#383f4d", -- Lighter shade of 'base'
           grey        = "#79809a",
         },
       },
@@ -39,21 +36,18 @@ return {
             CursorLine                = { bg = latte.warm_pink },
             Comment                   = { fg = latte.warm_grey },
             TabLine                   = { bg = latte.mid_grey, fg = latte.dark_grey },
-            --TabLineSel                = { fg = latte.white },
-            --NvimTreeNormal            = { bg = latte.beige },
-            --NvimTreeFolderIcon        = { fg = latte.dark_blue },
-            --NvimTreeFolderName        = { fg = latte.dark_blue },
-            --NvimTreeOpenedFolderName  = { fg = latte.dark_blue },
-            --NvimTreeEmptyFolderName   = { fg = latte.light_grey },
-            --NvimTreeRootFolder        = { fg = latte.gold },
           }
         end,
         frappe = function(frappe)
           return {
-            NormalNC                  = { bg = frappe.base_dark },
-            NormalSB                  = { bg = frappe.base_dark },
+            --NormalNC                  = { bg = frappe.base_deep },
+            --NormalSB                  = { bg = frappe.base_deep },
+            --Comment                   = { fg = frappe.grey},
+            --NvimTreeNormal            = { bg = frappe.base_light },
+            NormalNC                  = { bg = frappe.mantle },
+            NormalSB                  = { bg = frappe.mantle },
             Comment                   = { fg = frappe.grey},
-            --NvimTreeNormal            = { bg = frappe.base_deep},
+            NvimTreeNormal            = { bg = frappe.base_light },
           }
         end,
       },

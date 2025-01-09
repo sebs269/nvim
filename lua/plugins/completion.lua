@@ -30,6 +30,34 @@ return {
         })
       })
 
+      -- To do
+      luasnip.add_snippets("systemverilog", {
+        s("TODO", {
+          t('// <SAS> TODO - '), i(1, "Comment")
+        })
+      })
+
+      -- To do (begin/end)
+      luasnip.add_snippets("systemverilog", {
+        s("TODO_begin_end", {
+          t('// <SAS> TODO - '), i(1, "Comment"), t({'', '// </SAS>'})
+        })
+      })
+
+      -- Fix me
+      luasnip.add_snippets("systemverilog", {
+        s("FIXME", {
+          t('// <SAS> FIXME - '), i(1, "Comment")
+        })
+      })
+
+      -- Fix me (begin/end)
+      luasnip.add_snippets("systemverilog", {
+        s("FIXME_begin_end", {
+          t('// <SAS> FIXME - '), i(1, "Comment"), t({'', '// </SAS>'})
+        })
+      })
+
       cmp.setup({
         snippet = {
           -- REQUIRED - you must specify a snippet engine
@@ -42,7 +70,7 @@ return {
           documentation = cmp.config.window.bordered(),
         },
         mapping = {
-          ['<CR>'] = cmp.mapping(function(fallback)
+          ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               if luasnip.expandable() then
                 luasnip.expand()
@@ -85,7 +113,7 @@ return {
           end, { "i", "s" }),
 
           -- Jump to the next placeholder
-          ["<Tab>"] = cmp.mapping(function(fallback)
+          ["<Right>"] = cmp.mapping(function(fallback)
             if luasnip.locally_jumpable(1) then
               luasnip.jump(1)
             else
@@ -94,7 +122,7 @@ return {
           end, { "i", "s" }),
 
           -- Jump to the previous placeholder
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
+          ["<Left>"] = cmp.mapping(function(fallback)
             if luasnip.locally_jumpable(-1) then
               luasnip.jump(-1)
             else
@@ -137,7 +165,20 @@ return {
 
         -- `:` cmdline setup.
         cmp.setup.cmdline(':', {
-          mapping = cmp.mapping.preset.cmdline(),
+          mapping = cmp.mapping.preset.cmdline({
+            ["<Tab>"] = {
+              c = function(fallback)
+                local cmp = require("cmp")
+                if cmp.visible() then
+                  cmp.confirm({
+                    select = true,
+                  })
+                else
+                  fallback()
+                end
+              end,
+            },
+          }),
           sources = cmp.config.sources({
             { name = 'path' }
           }, {
