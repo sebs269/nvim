@@ -24,6 +24,7 @@ return {
           mantle      = "#252a33", -- Darker shade of 'base'
           --base_deep   = "#252a33", -- Darker shade of 'base'
           base_light  = "#383f4d", -- Lighter shade of 'base'
+          white       = "#e1e1e1",
           grey        = "#79809a",
         },
       },
@@ -44,8 +45,9 @@ return {
             --NormalSB                  = { bg = frappe.base_deep },
             --Comment                   = { fg = frappe.grey},
             --NvimTreeNormal            = { bg = frappe.base_light },
-            NormalNC                  = { bg = frappe.mantle },
-            NormalSB                  = { bg = frappe.mantle },
+            Normal                    = { fg = frappe.white },
+            NormalNC                  = { bg = frappe.mantle, fg = frappe.white},
+            NormalSB                  = { bg = frappe.mantle, fg = frappe.white},
             Comment                   = { fg = frappe.grey},
             NvimTreeNormal            = { bg = frappe.base_light },
           }
@@ -53,6 +55,11 @@ return {
       },
     }
 
-    vim.cmd [[colorscheme catppuccin]]
+    local bg = vim.o.background
+    if (bg == 'light') then
+      vim.cmd [[colorscheme catppuccin]]
+    else
+      vim.cmd [[colorscheme catppuccin]]
+    end
   end,
 }
