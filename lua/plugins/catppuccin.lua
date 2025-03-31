@@ -58,8 +58,6 @@ return {
     local bg = vim.o.background
     if (bg == 'light') then
       vim.cmd [[colorscheme catppuccin]]
-    else
-      vim.cmd [[colorscheme catppuccin]]
     end
   end,
 }
