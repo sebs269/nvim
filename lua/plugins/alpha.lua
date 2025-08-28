@@ -1,6 +1,7 @@
 return {
   'goolord/alpha-nvim',
   config = function ()
+    local custom_theme = "milhouse"
     local alpha = require'alpha'
     local dashboard = require'alpha.themes.dashboard'
 
@@ -42,54 +43,78 @@ return {
       return colorized
     end
 
-    -- Set the header
-    local header = {
-      [[                                         ]],
-      [[              ⣠⣶⣿⣿⣿⣿⣿⣷⣤                  ]],
-      [[           ⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦               ]],
-      [[          ⣴⣿⣿⣿⣿⣿⣿⡿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣶             ]],
-      [[         ⣿⡿⠟⠋⡽        ⠉⠻⢿⣿⣿⣿⣿⣦           ]],
-      [[            ⢠⣁⣤           ⠙⣿⣿⣿⣷          ]],
-      [[           ⣾⣿⣿⡿⠃    ⣿⣷⣤⣀  ⣾⣿⣿⣿⣿⣦         ]],
-      [[           ⣀⣁       ⠙⠿⣿⣿⠁⢸⣿⣿⣿⣿⣿⣿         ]],
-      [[        ⢀⠞  ⠉⣿⣿    ⣠⠶⠶⢶⣤ ⣿⣿⣿⣿⣿⣿⡿         ]],
-      [[        ⢸  ⠿⣀⣿⠿⠿⢿⣿⣿    ⠹⣿⣿⣿⣿⣿⣿⣿          ]],
-      [[        ⠈⢄⡴⠉      ⣇   ⠛ ⣿⣿⣿⣿⣿⣿⠃          ]],
-      [[         ⡞        ⠈⢄  ⣀⣾⣿⣿⣿⣿⣿⣿⣷          ]],
-      [[         ⡇           ⠉⠉⠁⠼⢉⡉⢻⠏ ⠻⠋         ]],
-      [[         ⢧               ⢁⡇⢀             ]],
-      [[          ⠣     ⣤⠃      ⠲⣤⢤⠋             ]],
-      [[           ⡴⠉⠙⠉⠁  ⣀      ⡇               ]],
-      [[          ⠈⠦⢤⣤⣤⣤⠤⠶⠚⠓     ⡇               ]],
-      [[                ⠙⠓⡄      ⣤               ]],
-      [[                  ⠟⣤⣤⣤⠴⠞⠉⣤⠦⣄             ]],
-      [[                ⢠⢻      ⠏   ⠹            ]],
-      [[                ⡇⣼     ⣸     ⣧           ]],
-    }
-    
-    local color_map = {
-      [[WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW]],
-      [[WWWWWWWWWWWWWWBBBBBBBBBWWWWWWWWWWWWWWWWWW]],
-      [[WWWWWWWWWWWBBBBBBBBBBBBBBBWWWWWWWWWWWWWWW]],
-      [[WWWWWWWWWWBBBBBBBBBBBBBBBBBBWWWWWWWWWWWWW]],
-      [[WWWWWWWWWBBBBBYYYYYYYYBBBBBBBBWWWWWWWWWWW]],
-      [[WWWWWWWWWWWWBBBYYYYYYYYYYYBBBBBWWWWWWWWWW]],
-      [[WWWWWWWWWWWBBBBBYYYYBBBBYYBBBBBBWWWWWWWWW]],
-      [[WWWWWWWWWWWRRYYYYYYYBBBBBBBBBBBBWWWWWWWWW]],
-      [[WWWWWWWWRRWWRRRYYYYRRRRRYBBBBBBBWWWWWWWWW]],
-      [[WWWWWWWWRWWNRRRRRRRWWWWRRBBBBBBWWWWWWWWWW]],
-      [[WWWWWWWWRRYYYYYYYYRWWWNWRRRRRRBWWWWWWWWWW]],
-      [[WWWWWWWWWYYYYYYYYYRRWWRRBBBBBRRWWWWWWWWWW]],
-      [[WWWWWWWWWYYYYYYYYYYYYRRBYYYYBWRRWWWWWWWWW]],
-      [[WWWWWWWWWYYYYYYYYYYYYYYYYYYYWWWWWWWWWWWWW]],
-      [[WWWWWWWWWWYYYYYYYYYYYYYYYYYYWWWWWWWWWWWWW]],
-      [[WWWWWWWWWWWYYYYYYYYYYYYYYYWWWWWWWWWWWWWWW]],
-      [[WWWWWWWWWWYYYYYYYYYYYYYYYYWWWWWWWWWWWWWWW]],
-      [[WWWWWWWWWWWWWWWWYYYYYYYYYPWWWWWWWWWWWWWWW]],
-      [[WWWWWWWWWWWWWWWWWWPPPPPPPPPPWWWWWWWWWWWWW]],
-      [[WWWWWWWWWWWWWWWWPPWWWWWWPWWWPWWWWWWWWWWWW]],
-      [[WWWWWWWWWWWWWWWWPPWWWWWPWWWWWPWWWWWWWWWWW]],
-    }
+    local header;
+    local color_map;
+
+    if (custom_theme == "milhouse") then
+
+       header = {
+        [[                                         ]],
+        [[              ⣠⣶⣿⣿⣿⣿⣿⣷⣤                  ]],
+        [[           ⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦               ]],
+        [[          ⣴⣿⣿⣿⣿⣿⣿⡿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣶             ]],
+        [[         ⣿⡿⠟⠋⡽        ⠉⠻⢿⣿⣿⣿⣿⣦           ]],
+        [[            ⢠⣁⣤           ⠙⣿⣿⣿⣷          ]],
+        [[           ⣾⣿⣿⡿⠃    ⣿⣷⣤⣀  ⣾⣿⣿⣿⣿⣦         ]],
+        [[           ⣀⣁       ⠙⠿⣿⣿⠁⢸⣿⣿⣿⣿⣿⣿         ]],
+        [[        ⢀⠞  ⠉⣿⣿    ⣠⠶⠶⢶⣤ ⣿⣿⣿⣿⣿⣿⡿         ]],
+        [[        ⢸  ⠿⣀⣿⠿⠿⢿⣿⣿    ⠹⣿⣿⣿⣿⣿⣿⣿          ]],
+        [[        ⠈⢄⡴⠉      ⣇   ⠛ ⣿⣿⣿⣿⣿⣿⠃          ]],
+        [[         ⡞        ⠈⢄  ⣀⣾⣿⣿⣿⣿⣿⣿⣷          ]],
+        [[         ⡇           ⠉⠉⠁⠼⢉⡉⢻⠏ ⠻⠋         ]],
+        [[         ⢧               ⢁⡇⢀             ]],
+        [[          ⠣     ⣤⠃      ⠲⣤⢤⠋             ]],
+        [[           ⡴⠉⠙⠉⠁  ⣀      ⡇               ]],
+        [[          ⠈⠦⢤⣤⣤⣤⠤⠶⠚⠓     ⡇               ]],
+        [[                ⠙⠓⡄      ⣤               ]],
+        [[                  ⠟⣤⣤⣤⠴⠞⠉⣤⠦⣄             ]],
+        [[                ⢠⢻      ⠏   ⠹            ]],
+        [[                ⡇⣼     ⣸     ⣧           ]],
+      }
+
+       color_map = {
+        [[WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW]],
+        [[WWWWWWWWWWWWWWBBBBBBBBBWWWWWWWWWWWWWWWWWW]],
+        [[WWWWWWWWWWWBBBBBBBBBBBBBBBWWWWWWWWWWWWWWW]],
+        [[WWWWWWWWWWBBBBBBBBBBBBBBBBBBWWWWWWWWWWWWW]],
+        [[WWWWWWWWWBBBBBYYYYYYYYBBBBBBBBWWWWWWWWWWW]],
+        [[WWWWWWWWWWWWBBBYYYYYYYYYYYBBBBBWWWWWWWWWW]],
+        [[WWWWWWWWWWWBBBBBYYYYBBBBYYBBBBBBWWWWWWWWW]],
+        [[WWWWWWWWWWWRRYYYYYYYBBBBBBBBBBBBWWWWWWWWW]],
+        [[WWWWWWWWRRWWRRRYYYYRRRRRYBBBBBBBWWWWWWWWW]],
+        [[WWWWWWWWRWWNRRRRRRRWWWWRRBBBBBBWWWWWWWWWW]],
+        [[WWWWWWWWRRYYYYYYYYRWWWNWRRRRRRBWWWWWWWWWW]],
+        [[WWWWWWWWWYYYYYYYYYRRWWRRBBBBBRRWWWWWWWWWW]],
+        [[WWWWWWWWWYYYYYYYYYYYYRRBYYYYBWRRWWWWWWWWW]],
+        [[WWWWWWWWWYYYYYYYYYYYYYYYYYYYWWWWWWWWWWWWW]],
+        [[WWWWWWWWWWYYYYYYYYYYYYYYYYYYWWWWWWWWWWWWW]],
+        [[WWWWWWWWWWWYYYYYYYYYYYYYYYWWWWWWWWWWWWWWW]],
+        [[WWWWWWWWWWYYYYYYYYYYYYYYYYWWWWWWWWWWWWWWW]],
+        [[WWWWWWWWWWWWWWWWYYYYYYYYYPWWWWWWWWWWWWWWW]],
+        [[WWWWWWWWWWWWWWWWWWPPPPPPPPPPWWWWWWWWWWWWW]],
+        [[WWWWWWWWWWWWWWWWPPWWWWWWPWWWPWWWWWWWWWWWW]],
+        [[WWWWWWWWWWWWWWWWPPWWWWWPWWWWWPWWWWWWWWWWW]],
+      }
+
+    else
+      header = {
+        [[                               __                ]],
+        [[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
+        [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
+        [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
+        [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
+        [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
+      }
+
+      color_map = {
+        [[YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY]],
+        [[YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY]],
+        [[YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY]],
+        [[YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY]],
+        [[YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY]],
+        [[YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY]],
+      }
+    end
 
     local bg = vim.o.background
     local fg_color
@@ -104,7 +129,8 @@ return {
       ["W"] = { fg = "#FFFFFF" },
       ["B"] = { fg = "#568cc7" },
       ["R"] = { fg = "#c9664c" },
-      ["Y"] = { fg = "#e1b400" },
+      --["Y"] = { fg = "#e1b400" },
+      ["Y"] = { fg = "#DBBC7F" },
       ["N"] = { fg = fg_color  },
       ["P"] = { fg = "#d9c3db" },
     }
