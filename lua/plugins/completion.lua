@@ -25,6 +25,13 @@ return {
       -- Custom snippets
       -- $sformatf
       luasnip.add_snippets("systemverilog", {
+        s("custom_uvm_info", {
+          t('`uvm_info(get_name(), $sformatf("'), i(1, "Message"), t('", '), i(2, "vars"), t('), UVM_LOW)')
+        })
+      })
+
+      -- $sformatf
+      luasnip.add_snippets("systemverilog", {
         s("$sformatf", {
           t('$sformatf("'), i(1, "Message"), t('", '), i(2, "vars"), t(')')
         })
