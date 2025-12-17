@@ -25,6 +25,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     -- import your plugins
+    { import = "plugins/colorschemes" },
     { import = "plugins" },
   },
   -- Configure any other settings here. See the documentation for more details.
@@ -34,3 +35,4 @@ require("lazy").setup({
   -- Automatically check for plugin updates
   --checker = { enabled = true },
 })
+require("core.colorscheme")
