@@ -22,5 +22,12 @@ return {
     -- Dependencies
     require("telescope").load_extension("advanced_git_search")
     require("telescope").load_extension("live_grep_args")
-  end
+  end,
+  config = function()
+    require("telescope").setup {
+      defaults = {
+        preview = false
+      }
+    }
+  end,
 }
