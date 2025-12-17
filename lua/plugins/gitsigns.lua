@@ -22,7 +22,6 @@ return {
         map('n', '<leader>gb', gitsigns.toggle_current_line_blame)
       end,
 
-      })
-    end,
-  }
-
+    })
+  end,
+}
